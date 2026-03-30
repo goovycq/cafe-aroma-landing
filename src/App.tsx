@@ -78,7 +78,7 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: "Grover Callisaya",
+    name: "Carlos Ruiz",
     role: "Diseñador",
     comment: "Los croissants son de otro mundo. Se nota la calidad de los ingredientes y el amor por la repostería artesanal en cada bocado.",
     avatar: "https://picsum.photos/seed/user2/100/100"
