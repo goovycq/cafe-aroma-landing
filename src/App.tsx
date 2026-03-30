@@ -60,6 +60,38 @@ const menuItems: MenuItem[] = [
   }
 ];
 
+interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  comment: string;
+  avatar: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "Sofía Martínez",
+    role: "Escritora",
+    comment: "El mejor espresso de la ciudad. El ambiente es perfecto para concentrarse y dejar fluir la creatividad. ¡Mi oficina favorita!",
+    avatar: "https://picsum.photos/seed/user1/100/100"
+  },
+  {
+    id: 2,
+    name: "Carlos Ruiz",
+    role: "Diseñador",
+    comment: "Los croissants son de otro mundo. Se nota la calidad de los ingredientes y el amor por la repostería artesanal en cada bocado.",
+    avatar: "https://picsum.photos/seed/user2/100/100"
+  },
+  {
+    id: 3,
+    name: "Elena Gómez",
+    role: "Amante del Café",
+    comment: "Mi lugar favorito para el brunch del fin de semana. El latte macchiato es simplemente espectacular y el servicio es impecable.",
+    avatar: "https://picsum.photos/seed/user3/100/100"
+  }
+];
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -222,6 +254,43 @@ export default function App() {
                   <p className="text-coffee-medium/60 leading-relaxed">
                     {item.description}
                   </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-cream border-t border-coffee-medium/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl text-coffee-dark mb-4">Lo que dicen nuestros clientes</h2>
+            <div className="w-20 h-1 bg-accent mx-auto mb-6"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((t, index) => (
+              <motion.div 
+                key={t.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-white p-8 rounded-[2rem] shadow-sm border border-coffee-medium/5 flex flex-col items-center text-center group hover:shadow-xl transition-all duration-500"
+              >
+                <div className="w-20 h-20 rounded-full overflow-hidden mb-6 border-4 border-accent/20 group-hover:border-accent transition-colors">
+                  <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                </div>
+                <div className="mb-4 text-accent">
+                  <Coffee size={20} fill="currentColor" />
+                </div>
+                <p className="text-coffee-medium/80 italic mb-6 leading-relaxed">
+                  "{t.comment}"
+                </p>
+                <div>
+                  <h4 className="font-serif text-xl text-coffee-dark">{t.name}</h4>
+                  <span className="text-accent text-sm font-bold uppercase tracking-widest">{t.role}</span>
                 </div>
               </motion.div>
             ))}
